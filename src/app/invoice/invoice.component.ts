@@ -3,9 +3,8 @@ import {NetworkService} from '../network.service';
 import {Invoice} from './Invoice';
 import {Lines} from './Lines';
 import {FormControl, FormGroup} from '@angular/forms';
-import {finalize} from 'rxjs/operators';
-import {AppComponent} from '../app.component';
 import {saveAs} from 'file-saver';
+import {MessageService} from '../message.service';
 
 @Component({
   selector: 'app-invoice',
@@ -22,7 +21,8 @@ export class InvoiceComponent implements OnInit {
     invoiceId: new FormControl(''),
   });
 
-  constructor(private networkService: NetworkService) {
+  constructor(private networkService: NetworkService, private messageService: MessageService) {
+    messageService.clear();
   }
 
   ngOnInit() {
@@ -42,8 +42,8 @@ export class InvoiceComponent implements OnInit {
     this.networkService.getInvoicePDF(this.invoiceForm.value).subscribe((response) => {
       const file = new Blob([response], {type: 'application/pdf'});
       saveAs(file, 'invoice.pdf');
-/*      const fileURL  = URL.createObjectURL(file);
-      window.open(fileURL);*/
+      /*      const fileURL  = URL.createObjectURL(file);
+            window.open(fileURL);*/
     });
   }
 }

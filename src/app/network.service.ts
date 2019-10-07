@@ -4,7 +4,6 @@ import {Cart} from './cart/Cart';
 import {Observable, of} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {catchError, tap} from 'rxjs/operators';
-import {CARTJSON} from './cart/mock-cart';
 import {Order} from './order/Order';
 import {InvoiceRequest} from './invoice/InvoiceRequest';
 import {Message} from './messages/Message';
@@ -51,12 +50,12 @@ export class NetworkService {
     console.log(order);
     return this.http.post(AppComponent.orderUrl, order, this.httpOptions).pipe(
       tap((orderResp: Order) => {
-        this.log(orderResp.orderId, 'Get Order', '');
+        this.log(orderResp.orderId, 'Get Order #', '');
       }), catchError(this.handleError<any>('getOrder', [])));
   }
 
-  updateCart(cart: any): Observable<any> {
-    return this.http.post<Cart>(AppComponent.cartUrl, cart, this.httpOptions).pipe(
+  updateCart(cart: Cart): Observable<any> {
+    return this.http.post<Cart>(AppComponent.cartUrl, JSON.stringify(cart), this.httpOptions).pipe(
       tap((cartResp: Cart) => {
         this.log(cartResp.userId, 'Get Cart', '');
       }), catchError(this.handleError<any>('updateCart', [])));

@@ -1,13 +1,13 @@
 <div *ngIf="messageService.message">
-  <div role="alert"
-       [ngClass]="{'alert alert-success':messageService.message.clazz === 'success', 'alert alert-danger':messageService.message.clazz === 'danger'}">
+  <div [ngClass]="{'alert alert-success':messageService.message.clazz === 'success', 'alert alert-danger':messageService.message.clazz === 'danger'}"
+       role="alert">
     <h6>Notification
-      <button type="button" class="close clear" data-dismiss="alert" aria-label="Close"
-              (click)="messageService.clear()">
+      <button (click)="messageService.clear()" aria-label="Close" class="close clear" data-dismiss="alert"
+              type="button">
         <span aria-hidden="true">&times;</span>
       </button>
     </h6>
     {{messageService.message.code}} {{messageService.message.messages}}
-    <a href="#" class="alert-link">{{messageService.message.link}}</a>.
+    <a class="alert-link" href="#">{{messageService.message.link}}</a>.
   </div>
 </div>

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NetworkService} from '../network.service';
 import {FormControl, FormGroup} from '@angular/forms';
-import {Order} from './Order';
+import {MessageService} from '../message.service';
 
 @Component({
   selector: 'app-order',
@@ -15,7 +15,8 @@ export class OrderComponent implements OnInit {
   });
   cart;
 
-  constructor(private networkService: NetworkService) {
+  constructor(private networkService: NetworkService, private messageService: MessageService) {
+    messageService.clear();
   }
 
   ngOnInit() {

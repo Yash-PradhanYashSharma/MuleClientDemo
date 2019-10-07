@@ -1,50 +1,47 @@
 import {Cart} from './Cart';
 
 export const CART: Cart = {
-  'userId': '123',
+  'userId': 'CUSTOMER - Ammy James',
   'productStoreId': 'India-Indore-zone-A',
   'orderName': 'Purchase Order',
-  'createdBy': 'Customer 1',
+  'createdBy': 'EXECUTIVE - John Doe',
   'orderDate': '12/03/19',
   'products': [
     {
       'productId': 'BASICTEE',
       'productName': 'BASIC TEE',
-      'quantity': '2',
-      'price': '10'
+      'quantity': 2,
+      'price': 250
+    },
+    {
+      'productId': 'BASICTEEBLACK',
+      'productName': 'Basic Tee Black',
+      'quantity': 4,
+      'price': 260
     },
     {
       'productId': 'BASICTEEBLUE',
-      'productName': 'BASIC TEE BLUE',
-      'quantity': '4',
-      'price': '33'
+      'productName': 'Basic Tee Blue',
+      'quantity': 3,
+      'price': 290
+    },
+    {
+      'productId': 'BASICTEEGREEN',
+      'productName': 'Basic Tee Green',
+      'quantity': 1,
+      'price': 280
+    },
+    {
+      'productId': 'BASICTEEORANGE',
+      'productName': 'Basic Tee Orange',
+      'quantity': 2,
+      'price': 300
+    },
+    {
+      'productId': 'BASICTEEWHITE',
+      'productName': 'Basic Tee White',
+      'quantity': 2,
+      'price': 270
     }
   ]
 };
-
-export const CARTJSON = '{\n' +
-  '   "userId":"123",\n' +
-  '   "productStoreId":"1",\n' +
-  '   "orderName":"purchase-order",\n' +
-  '   "createdBy":"kirti",\n' +
-  '   "orderDate":"12/03/19",\n' +
-  '   "products":[\n' +
-  '      {\n' +
-  '         "productId":"BASICTEE",\n' +
-  '         "productName":"BASIC TEE",\n' +
-  '         "quantity":1,\n' +
-  '         "price":10\n' +
-  '      },\n' +
-  '      {\n' +
-  '         "productId":"BASICTEEBLUE",\n' +
-  '         "productName":"BASIC TEE BLUE",\n' +
-  '         "quantity":2,\n' +
-  '         "price":1\n' +
-  '      }\n' +
-  '   ]\n' +
-  '}';
-
-export const ORDERJSON = '{\n' +
-  '    "orderId":50\n' +
-  '}';
-
