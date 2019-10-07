@@ -1,0 +1,13 @@
+<div *ngIf="messageService.message">
+  <div role="alert"
+       [ngClass]="{'alert alert-success':messageService.message.clazz === 'success', 'alert alert-danger':messageService.message.clazz === 'danger'}">
+    <h6>Notification
+      <button type="button" class="close clear" data-dismiss="alert" aria-label="Close"
+              (click)="messageService.clear()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </h6>
+    {{messageService.message.code}} {{messageService.message.messages}}
+    <a href="#" class="alert-link">{{messageService.message.link}}</a>.
+  </div>
+</div>
