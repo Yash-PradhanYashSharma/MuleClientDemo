@@ -9,6 +9,8 @@ import {InvoiceRequest} from './invoice/InvoiceRequest';
 import {Message} from './messages/Message';
 import {AppComponent} from './app.component';
 import {Invoice} from './invoice/Invoice';
+import {OrderResponse} from "./order/OrderResponse";
+import {CartResponse} from "./cart/CartResponse";
 
 @Injectable({
   providedIn: 'root'
@@ -35,29 +37,32 @@ export class NetworkService {
   }
 
   getInvoicePDF(invoice: InvoiceRequest): Observable<any> {
-    const finalURL = 'http://localhost:8085/test';
-    const httpOptions = {
-      'responseType': 'arraybuffer' as 'json'
-      // 'responseType'  : 'blob' as 'json'        //This also worked
-    };
-    return this.http.get(finalURL, httpOptions).pipe(
-      tap((invoiceResp: Invoice) => {
-        this.log(invoiceResp.id, 'Get Invoice PDF', '');
-      }), catchError(this.handleError<any>('getInvoicePDF', [])));
+    const finalURL = AppComponent.invoiceUrl + '/' + invoice.invoiceId + '?type=pdf';
+    return this.http.get(finalURL, {
+      headers: this.httpOptions.headers,
+      responseType: 'blob' as 'json'
+    }).pipe(catchError(this.handleError<any>('getInvoicePDF', [])));
   }
 
-  getOrder(order: Order): Observable<any> {
-    console.log(order);
+  getOrderPDF(order: Order): Observable<any> {
+    const finalURL = AppComponent.invoiceUrl + '/' + order.orderId + '?type=pdf';
+    return this.http.get(finalURL, {
+      headers: this.httpOptions.headers,
+      responseType: 'blob' as 'json'
+    }).pipe(catchError(this.handleError<any>('getOrderPDF', [])));
+  }
+
+  getOrder(order: Order): Observable<OrderResponse> {
     return this.http.post(AppComponent.orderUrl, order, this.httpOptions).pipe(
-      tap((orderResp: Order) => {
-        this.log(orderResp.orderId, 'Get Order #', '');
-      }), catchError(this.handleError<any>('getOrder', [])));
+      tap((orderResp: OrderResponse) => {
+        this.log(orderResp.orderId, 'Order #', '');
+      }), catchError(this.handleError<any>('Order Response', [])));
   }
 
-  updateCart(cart: Cart): Observable<any> {
-    return this.http.post<Cart>(AppComponent.cartUrl, JSON.stringify(cart), this.httpOptions).pipe(
-      tap((cartResp: Cart) => {
-        this.log(cartResp.userId, 'Get Cart', '');
+  updateCart(cart: Cart): Observable<CartResponse> {
+    return this.http.post<CartResponse>(AppComponent.cartUrl, JSON.stringify(cart), this.httpOptions).pipe(
+      tap((cartResp: CartResponse) => {
+        this.log(cartResp.orderId, cartResp.status, '');
       }), catchError(this.handleError<any>('updateCart', [])));
   }
 

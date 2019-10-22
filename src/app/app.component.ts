@@ -6,12 +6,10 @@ import {Component} from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  public static src = 'https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf';
-  /*private static host = '10.26.8.107';*/
   private static host = 'localhost';
-  public static testURL = `http://${AppComponent.host}:8085/test`;
-  public static cartUrl = `http://${AppComponent.host}:8081/v1/api/shipments/cart`;
-  public static orderUrl = `http://${AppComponent.host}:8081/v1/api/shipments/order`;
-  public static invoiceUrl = `http://${AppComponent.host}:8081/v1/api/shipments/invoice`;
+  private static host2 = '10.26.8.107';
+  public static cartUrl = `http://${AppComponent.host2}:8081/v1/api/shipments/cart`;
+  public static orderUrl = `http://${AppComponent.host2}:8081/v1/api/shipments/order`;
+  public static invoiceUrl = `http://${AppComponent.host2}:8081/v1/api/shipments/invoice`;
   title = 'MuleSoft Integration Middleware Accelerator';
 }

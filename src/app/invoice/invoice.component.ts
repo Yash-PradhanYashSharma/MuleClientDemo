@@ -29,21 +29,17 @@ export class InvoiceComponent implements OnInit {
   }
 
   getInvoice(): void {
-    /*console.log(this.invoiceForm.value);*/
     this.networkService.getInvoice(this.invoiceForm.value).subscribe(res => {
       this.invoiceValue = res;
       const lines = res['lines'];
-      /*console.log(lines);*/
       this.lines = lines['data'];
     });
   }
 
   getInvoicePDF() {
     this.networkService.getInvoicePDF(this.invoiceForm.value).subscribe((response) => {
-      const file = new Blob([response], {type: 'application/pdf'});
+      let file = new Blob([response], { type: 'application/pdf' });
       saveAs(file, 'invoice.pdf');
-      /*      const fileURL  = URL.createObjectURL(file);
-            window.open(fileURL);*/
     });
   }
 }

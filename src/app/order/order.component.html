@@ -7,7 +7,7 @@
                placeholder="Order Id" type="number">
         <div class="input-group-append">
           <button class="btn btn-outline-primary" id="order-id" type="submit">Show Order</button>
-          <button class="btn btn-outline-primary" id="invoice-pdf-id" type="submit">Show PDF</button>
+          <button class="btn btn-outline-primary" id="invoice-pdf-id" (click)="getOrderPDF()" >Show PDF</button>
         </div>
       </div>
     </form>

@@ -1,10 +1,10 @@
 import {Cart} from './Cart';
 
 export const CART: Cart = {
-  'userId': 'CUSTOMER - Ammy James',
+  'userId': 'Ammy James',
   'productStoreId': 'India-Indore-zone-A',
   'orderName': 'Purchase Order',
-  'createdBy': 'EXECUTIVE - John Doe',
+  'createdBy': 'John Doe',
   'orderDate': '12/03/19',
   'products': [
     {

@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {NetworkService} from '../network.service';
 import {CART} from './mock-cart';
 import {Cart} from './Cart';
-import {Message} from '../messages/Message';
 import {MessageService} from '../message.service';
 import {CartResponse} from './CartResponse';
 
@@ -26,7 +25,6 @@ export class CartComponent implements OnInit {
   getCart() {
     this.networkService.updateCart(this.cart).subscribe((res) => {
       this.cartResponse = res;
-      this.messageService.add(new Message(this.cartResponse.orderId, this.cartResponse.status, '', 'success'));
     });
   }
 
